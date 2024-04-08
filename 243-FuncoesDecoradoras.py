@@ -8,7 +8,7 @@ def add_repr(cls):
         class_dict = self.__dict__
         class_repr = f'({class_name} {class_dict})'
         return class_repr
-    cls.__rerpr__ = meu_repr
+    cls.__repr__ = meu_repr
     return cls
 
 # Neste segundo exemplo; É criado uma função 'decoradora' que vai receber um método de uma classe dentro de sí;
