@@ -1,4 +1,6 @@
-# Funções decoradoras e decoradores com classes
+# Esta função estará fazendo o papel de um decorador para Classes;
+# Por isso ele recebe como parâmetro 'cls', para que ele possa alterar a classe em sí.
+# Dito isso, na função interna, ele recebe self como forma de manipulação dos atributos internos da classe.
 
 def add_repr(cls):
     def meu_repr(self):
@@ -9,6 +11,9 @@ def add_repr(cls):
     cls.__rerpr__ = meu_repr
     return cls
 
+# Neste segundo exemplo; É criado uma função 'decoradora' que vai receber um método de uma classe dentro de sí;
+# Em sua função interna ele recebe os parâmetros do método 'self, *args, **kwargs' podendo agora ter acesso ao resultado
+# da alteração e podendo manipular a saída do método da classe.
 
 def meu_planeta(metodo):
     def interno(self, *args, **kwargs):
@@ -20,7 +25,7 @@ def meu_planeta(metodo):
     return interno
 
 
-
+# Aplicando o decorador de Classe: 
 @add_repr
 class Time():
     def __init__(self, nome):
@@ -32,7 +37,8 @@ class Time():
 class Planeta():
     def __init__(self, nome):
         self.nome = nome
-
+        
+# Aplicando o decorador de métodos: 
     @meu_planeta
     def falar_nome(self):
         return f'O planeta é {self.nome}'
